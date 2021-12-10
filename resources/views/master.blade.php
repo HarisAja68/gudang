@@ -32,11 +32,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Gudang Saya</div>
             </a>
 
             <!-- Divider -->
@@ -114,10 +114,19 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout
+                                    </button>
+                                </form>
+                                {{-- <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('formLogout').submit();">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a>
+                                    <form id="formLogout" action="{{ route('logout') }}" method="POST">@csrf</form>
+                                </a> --}}
+                                {{-- <a href="" class="btn btn-default btn-flat float-right">Log out</a> --}}
                             </div>
                         </li>
                     </ul>

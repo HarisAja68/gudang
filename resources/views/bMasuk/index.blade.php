@@ -32,8 +32,14 @@
                                     <td>{{ $value->jumlah }}</td>
                                     <td>{{ $value->tanggal }}</td>
                                     <td>
-                                        <a href="#" style="margin-bottom: 10px" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                                        <a href="#" style="margin-bottom: 10px" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                        <div class="d-flex">
+                                            <a href="{{ route("bMasuk.edit", $value->id_barangMasuk) }}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                                            <form action="{{ route("bMasuk.destroy", $value->id_barangMasuk) }}" method="post">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i> Hapus</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

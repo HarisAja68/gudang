@@ -25,8 +25,7 @@ class barangMasukController extends Controller
      */
     public function create()
     {
-        $masuk = new barangMasuk;
-        return view('bMasuk.create', compact('masuk'));
+        return view('bMasuk.create');
     }
 
     /**
@@ -66,7 +65,8 @@ class barangMasukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $masuk = barangMasuk::find($id);
+        return view('bMasuk.edit', compact('masuk'));
     }
 
     /**
@@ -78,7 +78,12 @@ class barangMasukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $masuk = barangMasuk::find($id);
+        $masuk->nama = $request->nama;
+        $masuk->jumlah = $request->jumlah;
+        $masuk->tanggal = $request->tanggal;
+        $masuk->save();
+        return redirect('bMasuk');
     }
 
     /**
@@ -89,6 +94,8 @@ class barangMasukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $masuk = barangMasuk::find($id);
+        $masuk->delete();
+        return redirect('bMasuk');
     }
 }

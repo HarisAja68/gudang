@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
     barangMasukController,
     HomeController,
+    LoginController,
 };
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('bMasuk', barangMasukController::class);

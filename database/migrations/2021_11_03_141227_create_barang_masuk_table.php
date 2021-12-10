@@ -14,7 +14,7 @@ class CreateBarangMasukTable extends Migration
     public function up()
     {
         Schema::create('barang_masuk', function (Blueprint $table) {
-            $table->id('id_barang');
+            $table->id('id_barangMasuk');
             $table->string('kode', 200)->default(null);
             $table->string('nama', 200)->default(null);
             $table->string('jumlah', 200)->default(null);
